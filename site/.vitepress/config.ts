@@ -12,6 +12,45 @@ if (fs.existsSync(registryPath)) {
 // 补充核心信任与法律政策支撑页面
 ['/about/', '/methodology/', '/privacy/', '/terms/', '/disclosure/'].forEach(u => publishedUrls.add(u));
 
+// 站长平台验证配置 (优先使用环境变量，其次读取 data/verification.json)
+const verificationConfigPath = path.resolve(__dirname, '../../data/verification.json');
+let verification: Record<string, string> = {};
+if (fs.existsSync(verificationConfigPath)) {
+  try {
+    verification = JSON.parse(fs.readFileSync(verificationConfigPath, 'utf-8'));
+  } catch {}
+}
+
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION || verification.google;
+const bingVerification = process.env.MSVALIDATE_01 || verification.bing;
+const shenmaVerification = process.env.SHENMA_SITE_VERIFICATION || verification.shenma;
+const baiduVerification = process.env.BAIDU_SITE_VERIFICATION || verification.baidu;
+
+// 基础全局 Head
+const baseHead: HeadConfig[] = [
+  ['link', { rel: 'icon', type: 'image/jpeg', href: '/avatar.jpg?v=20261026' }],
+  ['link', { rel: 'shortcut icon', href: '/avatar.jpg?v=20261026' }],
+  ['link', { rel: 'apple-touch-icon', href: '/avatar.jpg?v=20261026' }],
+  ['meta', { name: 'robots', content: 'index, follow' }],
+  ['meta', { name: 'theme-color', content: '#2563eb' }],
+  ['meta', { property: 'og:site_name', content: '梯子参考' }],
+  ['meta', { property: 'og:locale', content: 'zh_CN' }]
+];
+
+// 动态预留四大主流站长平台验证 Meta
+if (googleVerification) {
+  baseHead.push(['meta', { name: 'google-site-verification', content: googleVerification }]);
+}
+if (bingVerification) {
+  baseHead.push(['meta', { name: 'msvalidate.01', content: bingVerification }]);
+}
+if (shenmaVerification) {
+  baseHead.push(['meta', { name: 'shenma-site-verification', content: shenmaVerification }]);
+}
+if (baiduVerification) {
+  baseHead.push(['meta', { name: 'baidu-site-verification', content: baiduVerification }]);
+}
+
 export default defineConfig({
   lang: 'zh-CN',
   title: '梯子参考',
@@ -45,15 +84,41 @@ export default defineConfig({
     if (!rel.endsWith('/')) rel += '/';
     if (rel === '//') rel = '/';
     const canonicalUrl = `https://tizicankao.cc${rel}`;
+    const pageTitle = pageData.title ? `${pageData.title} ｜ 梯子参考 tizicankao.cc` : '梯子参考：按设备与需求选择合适的网络方案';
+    const pageDesc = pageData.description || '客观中立的网络选型、客户端与技术配置指南';
+    const isHome = rel === '/';
+    const isTopicHub = !isHome && rel.split('/').filter(Boolean).length === 1;
 
     const head: HeadConfig[] = [
-      ['link', { rel: 'canonical', href: canonicalUrl }]
+      // 1. 规范网址 Canonical
+      ['link', { rel: 'canonical', href: canonicalUrl }],
+
+      // 2. Open Graph 社交网络协议
+      ['meta', { property: 'og:title', content: pageTitle }],
+      ['meta', { property: 'og:description', content: pageDesc }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
+      ['meta', { property: 'og:type', content: isHome ? 'website' : 'article' }],
+      ['meta', { property: 'og:image', content: 'https://tizicankao.cc/avatar.jpg' }],
+
+      // 3. Twitter Card
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:title', content: pageTitle }],
+      ['meta', { name: 'twitter:description', content: pageDesc }],
+      ['meta', { name: 'twitter:image', content: 'https://tizicankao.cc/avatar.jpg' }]
     ];
 
-    // Schema.org 结构化数据
+    if (!isHome) {
+      head.push(
+        ['meta', { property: 'article:published_time', content: '2026-10-26T00:00:00+08:00' }],
+        ['meta', { property: 'article:modified_time', content: new Date().toISOString() }],
+        ['meta', { property: 'article:author', content: '梯子参考技术评测实验室' }]
+      );
+    }
+
+    // 4. Schema.org 结构化数据体系
     const schemas: any[] = [];
 
-    // 1. 全局 BreadcrumbList 面包屑
+    // 面包屑 BreadcrumbList
     const pathSegments = rel.split('/').filter(Boolean);
     if (pathSegments.length > 0) {
       const itemListElement = [
@@ -81,27 +146,73 @@ export default defineConfig({
       });
     }
 
-    // 2. 首页 WebSite Schema
-    if (rel === '/') {
+    // 首页 WebSite + Organization
+    if (isHome) {
       schemas.push({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: '梯子参考',
         url: 'https://tizicankao.cc/',
         description: '梯子参考：按设备与需求选择合适的网络方案。客观比较手机电脑客户端、服务类型、使用教程与网络排障指南。',
+        publisher: {
+          '@type': 'Organization',
+          name: '梯子参考',
+          url: 'https://tizicankao.cc/',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://tizicankao.cc/avatar.jpg'
+          }
+        },
         potentialAction: {
           '@type': 'SearchAction',
           target: 'https://tizicankao.cc/?q={search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       });
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: '梯子参考',
+        url: 'https://tizicankao.cc/',
+        logo: 'https://tizicankao.cc/avatar.jpg'
+      });
+    } else if (rel === '/about/') {
+      // 关于我们 AboutPage
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: pageTitle,
+        description: pageDesc,
+        url: canonicalUrl
+      });
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: '梯子参考技术评测实验室',
+        url: 'https://tizicankao.cc/about/',
+        logo: 'https://tizicankao.cc/avatar.jpg'
+      });
+    } else if (isTopicHub) {
+      // 栏目/主专题 CollectionPage
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: pageTitle,
+        description: pageDesc,
+        url: canonicalUrl,
+        publisher: {
+          '@type': 'Organization',
+          name: '梯子参考',
+          url: 'https://tizicankao.cc/'
+        }
+      });
     } else {
-      // 3. 技术文章与专题页 TechArticle Schema
+      // 具体技术指南 TechArticle
       schemas.push({
         '@context': 'https://schema.org',
         '@type': 'TechArticle',
         headline: pageData.title || '梯子参考技术指南',
-        description: pageData.description || '客观中立的网络选型、客户端与技术配置指南',
+        description: pageDesc,
         url: canonicalUrl,
         inLanguage: 'zh-CN',
         author: {
@@ -129,16 +240,7 @@ export default defineConfig({
 
     return head;
   },
-  head: [
-    ['link', { rel: 'icon', type: 'image/jpeg', href: '/avatar.jpg?v=20261026' }],
-    ['link', { rel: 'shortcut icon', href: '/avatar.jpg?v=20261026' }],
-    ['link', { rel: 'apple-touch-icon', href: '/avatar.jpg?v=20261026' }],
-    ['meta', { name: 'robots', content: 'index, follow' }],
-    ['meta', { name: 'theme-color', content: '#2563eb' }],
-    ['meta', { property: 'og:site_name', content: '梯子参考' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:locale', content: 'zh_CN' }]
-  ],
+  head: baseHead,
   themeConfig: {
     logo: '/logo.svg',
     siteTitle: '梯子参考',
