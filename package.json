@@ -1,0 +1,32 @@
+{
+  "name": "tizicankao-cc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "梯子参考 tizicankao.cc - 手机电脑方案、客户端与网络服务选型指南",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx scripts/prepare-content.ts && vitepress dev site",
+    "plan:validate": "tsx scripts/validate-plan.ts",
+    "content:prepare": "tsx scripts/prepare-content.ts",
+    "check:content": "tsx scripts/audit-content.ts",
+    "check:links": "tsx scripts/check-links.ts",
+    "check:secrets": "tsx scripts/check-secrets.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx scripts/test-runner.ts",
+    "build:site": "vitepress build site",
+    "search:index": "pagefind --site dist",
+    "build": "npm run plan:validate && npm run content:prepare && npm run build:site && npm run search:index && tsx scripts/copy-deploy.ts && npm run check:content",
+    "preview": "vitepress preview site",
+    "check:all": "npm run plan:validate && npm run typecheck && npm run check:content && npm run check:links && npm run check:secrets && npm run test"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "pagefind": "^1.3.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitepress": "^1.6.3"
+  }
+}

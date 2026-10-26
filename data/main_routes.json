@@ -1,0 +1,35 @@
+{
+  "mainSite": "https://jichangbang.org",
+  "brandName": "机场榜一",
+  "defaultUtm": {
+    "source": "tizicankao.cc",
+    "medium": "referral"
+  },
+  "verifiedRoutes": {
+    "recommend": {
+      "path": "/recommend/",
+      "purpose": "一般网络服务选购与综合推荐榜单",
+      "recommendedCampaign": "general_selection"
+    },
+    "pricing": {
+      "path": "/pricing/",
+      "purpose": "预算、流量资费核对与按需套餐选择",
+      "recommendedCampaign": "plan_selection"
+    },
+    "compare": {
+      "path": "/compare/",
+      "purpose": "服务商差异比较、换服务与备用方案取舍",
+      "recommendedCampaign": "provider_compare"
+    },
+    "ai_streaming": {
+      "path": "/ai-streaming/",
+      "purpose": "AI 工具访问与海外流媒体专线支持核验",
+      "recommendedCampaign": "specialized_nodes"
+    },
+    "reviews": {
+      "path": "/reviews/",
+      "purpose": "服务品牌深度实测与独立档案资料",
+      "recommendedCampaign": "brand_reviews"
+    }
+  }
+}

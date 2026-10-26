@@ -1,0 +1,102 @@
+# ==============================================================================
+# 梯子参考 tizicankao.cc - Apache 生产环境高性能静态配置文件
+# ==============================================================================
+
+# 开启重写引擎
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. 强制 HTTPS 传输 (如生产反向代理未处理，由 Apache 兜底)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://tizicankao.cc/$1 [R=301,L]
+
+  # 2. 规范化域名：去掉 www 前缀，统一规范为 https://tizicankao.cc
+  RewriteCond %{HTTP_HOST} ^www\.tizicankao\.cc$ [NC]
+  RewriteRule ^(.*)$ https://tizicankao.cc/$1 [R=301,L]
+
+  # 3. Clean URLs 与尾斜杠标准化重写 (VitePress cleanUrls 适配)
+  # 若请求为实际目录，确保附带尾斜杠
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*)$ https://tizicankao.cc/$1/ [R=301,L]
+
+  # 若请求为具体路径，按目录 index.html 或 .html 文件进行内部转发
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# 默认索引文件名
+DirectoryIndex index.html
+
+# 4. 真实 HTTP 404 状态码配置 (严禁静默 200 重定向至首页)
+ErrorDocument 404 /404.html
+
+# 5. MIME 类型补全与 UTF-8 字符集
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddType text/html;charset=UTF-8 .html
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType application/wasm .wasm
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+# 6. Gzip / Deflate 静态资源传输压缩
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE application/wasm image/svg+xml font/woff2
+</IfModule>
+
+# 7. 强缓存与缓存控制策略 (Headers & Expires)
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML 页面与 404：无缓存，确保用户与爬虫获取最新内容
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # 带哈希的静态资源 (CSS / JS / Fonts / WebP / SVG)：强缓存 1 年
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType application/wasm "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML 页面严格校验
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # VitePress 构建哈希资源强缓存
+  <FilesMatch "\.(css|js|woff2|woff|webp|png|jpg|svg|wasm)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Pagefind 静态全文搜索索引碎片：缓存 1 小时，后台自动协商
+  <FilesMatch "^pagefind.*">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # 8. 生产环境基础安全响应头
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# 9. 禁止直接访问敏感文件与目录
+<FilesMatch "^\.(git|env|vscode|bak|swp|md)">
+  Require all denied
+</FilesMatch>

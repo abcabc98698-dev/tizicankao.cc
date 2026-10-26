@@ -1,0 +1,52 @@
+[
+  {
+    "id": "src-mihomo-docs",
+    "title": "Mihomo Documentation & Configuration Reference",
+    "url": "https://wiki.metacubex.one/",
+    "publisher": "MetaCubeX Team",
+    "accessedAt": "2026-10-20T10:00:00Z",
+    "supportsClaims": ["Clash 扩展配置语法", "TUN 模式驱动与路由表分流机制", "策略组负载均衡"],
+    "versionScope": "v1.18.0 - v1.19.x",
+    "limitations": "文档部分前沿特性针对 Alpha 分支，稳定版需核对 release notes"
+  },
+  {
+    "id": "src-singbox-docs",
+    "title": "sing-box Official Documentation",
+    "url": "https://sing-box.sagernet.org/",
+    "publisher": "SagerNet Open Source Organization",
+    "accessedAt": "2026-10-20T11:00:00Z",
+    "supportsClaims": ["JSON 规则集配置", "Inbound/Outbound 拓扑", "TUN 栈模式 gVisor / System / Mixed"],
+    "versionScope": "v1.9.0 - v1.10.x",
+    "limitations": "各版本之间 JSON Schema 变动较快，须注意配置迁移提示"
+  },
+  {
+    "id": "src-xray-docs",
+    "title": "Project X / Xray-core Documentation",
+    "url": "https://xtls.github.io/",
+    "publisher": "Project X Community",
+    "accessedAt": "2026-10-21T09:30:00Z",
+    "supportsClaims": ["VLESS Reality 协议原理", "XTLS 流控特性", "回落与多路复用"],
+    "versionScope": "v1.8.x - v24.x",
+    "limitations": "侧重服务端与核心底层协议，不包含 GUI 客户端专属行为"
+  },
+  {
+    "id": "src-google-helpful-content",
+    "title": "Creating helpful, reliable, people-first content",
+    "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "publisher": "Google Search Central",
+    "accessedAt": "2026-10-15T08:00:00Z",
+    "supportsClaims": ["原创第一手经验优先", "深度实质价值", "避免机器堆叠与近义词灌水"],
+    "versionScope": "Current",
+    "limitations": "为通用搜索引擎内容质量指南，非技术协议标准"
+  },
+  {
+    "id": "src-jichangbang-reviews",
+    "title": "机场榜一 主站服务测评与实时测速公示",
+    "url": "https://jichangbang.org/reviews/",
+    "publisher": "机场榜一数据实验室",
+    "accessedAt": "2026-10-25T14:00:00Z",
+    "supportsClaims": ["主流商业机场套餐公开标价", "节点可用率样本", "优惠码生效状态"],
+    "versionScope": "2026 Q3-Q4 数据集",
+    "limitations": "测速仅代表测试节点与测试网络当时的瞬时条件，分站不将测速直接作为永久确定事实"
+  }
+]
