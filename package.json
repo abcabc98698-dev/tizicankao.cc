@@ -11,15 +11,17 @@
     "check:content": "tsx scripts/audit-content.ts",
     "check:links": "tsx scripts/check-links.ts",
     "check:secrets": "tsx scripts/check-secrets.ts",
+    "check:dedup": "tsx scripts/check-dedup-and-url.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx scripts/test-runner.ts",
     "build:site": "vitepress build site",
     "search:index": "pagefind --site dist",
-    "build": "npm run plan:validate && npm run content:prepare && npm run build:site && npm run search:index && tsx scripts/copy-deploy.ts && npm run check:content",
-    "preview": "vitepress preview site",
-    "check:all": "npm run plan:validate && npm run typecheck && npm run check:content && npm run check:links && npm run check:secrets && npm run test"
+    "build": "npm run plan:validate && npm run content:prepare && npm run build:site && npm run search:index && tsx scripts/copy-deploy.ts && npm run check:content && npm run check:dedup",
+    "preview": "tsx scripts/preview-server.ts",
+    "check:all": "npm run plan:validate && npm run typecheck && npm run check:content && npm run check:links && npm run check:secrets && npm run check:dedup && npm run test"
   },
   "dependencies": {
+    "mermaid": "^12.2.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {

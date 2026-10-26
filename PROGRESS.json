@@ -1,20 +1,20 @@
 {
   "site": "https://tizicankao.cc",
-  "updatedAt": "2026-10-26T19:38:30+08:00",
+  "updatedAt": "2026-10-26T14:18:19.322Z",
   "totalNodes": 560,
   "counts": {
-    "planned": 553,
+    "planned": 540,
     "researching": 0,
     "draft": 0,
     "reviewed": 0,
-    "published": 7,
+    "published": 20,
     "blocked": 0
   },
   "zhCharStats": {
-    "totalEligibleChars": 71193,
-    "publishedPages": 7,
-    "averageCharsPerPage": 10170
+    "totalEligibleChars": 206814,
+    "publishedPages": 20,
+    "averageCharsPerPage": 10341
   },
   "currentPhase": "Phase 3 - Deep Content Verification, Production Build & Search Verification",
-  "nextAction": "Batch produce remaining hub aggregation pages and child clusters with automated CI checks"
+  "nextAction": "Published H01-S1 (/choose/needs/)! Next: Publish H01-S2 (/choose/decisions/)"
 }

@@ -102,10 +102,10 @@
       "H01"
     ],
     "wordTarget": 10000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 11307,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T14:16:37.973Z"
   },
   {
     "id": "H01-S1-C1",
@@ -1443,10 +1443,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10127,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:09:23.738Z"
   },
   {
     "id": "H02-S1",
@@ -2813,10 +2813,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10442,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:14:57.076Z"
   },
   {
     "id": "H03-S1",
@@ -4183,10 +4183,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10226,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:20:03.655Z"
   },
   {
     "id": "H04-S1",
@@ -5553,10 +5553,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10122,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:23:58.951Z"
   },
   {
     "id": "H05-S1",
@@ -6923,10 +6923,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10069,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:31:16.240Z"
   },
   {
     "id": "H06-S1",
@@ -8293,10 +8293,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10401,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:36:37.263Z"
   },
   {
     "id": "H07-S1",
@@ -9663,10 +9663,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10200,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T12:41:40.011Z"
   },
   {
     "id": "H08-S1",
@@ -11033,10 +11033,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 11333,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T13:36:56.912Z"
   },
   {
     "id": "H09-S1",
@@ -12403,10 +12403,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10342,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T13:44:56.012Z"
   },
   {
     "id": "H10-S1",
@@ -13773,10 +13773,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10238,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T13:53:36.949Z"
   },
   {
     "id": "H11-S1",
@@ -15143,10 +15143,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10410,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T14:00:31.017Z"
   },
   {
     "id": "H12-S1",
@@ -16513,10 +16513,10 @@
       "H00"
     ],
     "wordTarget": 12000,
-    "zhCharCount": 0,
-    "status": "planned",
+    "zhCharCount": 10240,
+    "status": "published",
     "createdAt": "2026-10-26T18:40:00+08:00",
-    "updatedAt": "2026-10-26T18:40:00+08:00"
+    "updatedAt": "2026-10-26T14:07:23.330Z"
   },
   {
     "id": "H13-S1",

@@ -59,7 +59,9 @@ echo "这里是代码块中的汉字，应该被剔除"
     'SiteHeader', 'MoreTopicsDropdown', 'MobileNav', 'PagefindSearch',
     'TaskFinder', 'AnswerFirst', 'TopicMatrix', 'ComparisonTable',
     'DecisionTree', 'VersionScope', 'SourceList', 'ClientCard',
-    'TrialCard', 'MainSiteCTA', 'Disclosure', 'Breadcrumbs', 'RelatedTasks'
+    'TrialCard', 'MainSiteCTA', 'Disclosure', 'Breadcrumbs', 'RelatedTasks',
+    'ReadingProgressBar', 'TableOfContents', 'MobileOutlineCard', 'BackToTop',
+    'MermaidRenderer'
   ];
   for (const comp of components) {
     const compPath = path.resolve(process.cwd(), `site/.vitepress/theme/components/${comp}.vue`);

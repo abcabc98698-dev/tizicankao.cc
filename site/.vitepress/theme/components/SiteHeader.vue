@@ -3,9 +3,12 @@
     <div class="header-inner">
       <!-- 品牌区域 -->
       <div class="header-brand-wrap">
-        <a href="/" class="brand-link">
-          <span class="brand-title">梯子参考</span>
-          <span class="brand-domain">tizicankao.cc</span>
+        <a href="/" class="brand-link" title="梯子参考 tizicankao.cc 首页">
+          <img :src="'/avatar.jpg'" alt="梯子参考" class="brand-avatar" />
+          <div class="brand-text-col">
+            <span class="brand-title">梯子参考</span>
+            <span class="brand-domain">tizicankao.cc</span>
+          </div>
         </a>
       </div>
 
@@ -83,20 +86,42 @@ import PagefindSearch from './PagefindSearch.vue';
 
 .brand-link {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
 }
 
+.brand-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-link:hover .brand-avatar {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+.brand-text-col {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
 .brand-title {
-  font-size: 19px;
-  font-weight: 700;
+  font-size: 17.5px;
+  font-weight: 800;
   color: #0f172a;
   letter-spacing: -0.01em;
 }
 
 .brand-domain {
-  font-size: 13px;
+  font-size: 11.5px;
   color: #64748b;
   font-weight: 500;
 }

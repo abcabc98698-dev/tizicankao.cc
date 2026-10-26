@@ -1,14 +1,30 @@
 <template>
   <div class="site-wrapper">
+    <!-- 顶部极细阅读进度指示器 -->
+    <ReadingProgressBar />
+
     <!-- 统一品牌顶部导航 -->
     <SiteHeader />
 
     <!-- 核心主体内容区 -->
     <main class="site-main-content">
-      <div class="vp-doc-wrapper" data-pagefind-body>
-        <Content />
+      <div class="site-content-flex">
+        <div class="vp-doc-wrapper" data-pagefind-body>
+          <!-- 移动端轻量章节速览导读卡片 (小屏可见，大屏由右侧大纲接管) -->
+          <MobileOutlineCard />
+          <Content />
+        </div>
+        <aside class="toc-sidebar-wrap" data-pagefind-ignore="index">
+          <TableOfContents />
+        </aside>
       </div>
     </main>
+
+    <!-- 悬浮返回顶部 -->
+    <BackToTop />
+
+    <!-- 流程图 Mermaid 客户端渲染器 -->
+    <MermaidRenderer />
 
     <!-- 品牌简白风格页脚 -->
     <footer class="site-footer" data-pagefind-ignore="index">
@@ -60,11 +76,38 @@
 
 <script setup lang="ts">
 import SiteHeader from './components/SiteHeader.vue';
+import ReadingProgressBar from './components/ReadingProgressBar.vue';
+import TableOfContents from './components/TableOfContents.vue';
+import MobileOutlineCard from './components/MobileOutlineCard.vue';
+import BackToTop from './components/BackToTop.vue';
+import MermaidRenderer from './components/MermaidRenderer.vue';
 </script>
 
 <style scoped>
-.vp-doc-wrapper {
+.site-content-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
   width: 100%;
+}
+
+.vp-doc-wrapper {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 940px;
+}
+
+.toc-sidebar-wrap {
+  width: 250px;
+  flex-shrink: 0;
+  display: block;
+}
+
+@media (max-width: 1200px) {
+  .toc-sidebar-wrap {
+    display: none;
+  }
 }
 
 .footer-disclosure {

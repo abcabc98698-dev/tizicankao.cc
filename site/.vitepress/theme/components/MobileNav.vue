@@ -19,7 +19,10 @@
 
     <div v-show="isOpen" class="mobile-drawer">
       <div class="drawer-header">
-        <div class="drawer-brand">梯子参考导航</div>
+        <div class="drawer-brand-wrap">
+          <img :src="'/avatar.jpg'" alt="梯子参考" class="drawer-avatar" />
+          <span class="drawer-brand">梯子参考</span>
+        </div>
         <button class="close-btn" @click="isOpen = false">✕</button>
       </div>
 
@@ -110,6 +113,20 @@ const isOpen = ref(false);
   align-items: center;
   padding: 16px;
   border-bottom: 1px solid #e2e8f0;
+}
+
+.drawer-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  object-fit: cover;
 }
 
 .drawer-brand {
