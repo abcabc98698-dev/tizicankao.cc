@@ -49,7 +49,7 @@
         <a
           href="https://jichangbang.org/recommend/?utm_source=tizicankao.cc&utm_medium=referral&utm_campaign=mobile_drawer"
           target="_blank"
-          rel="noopener sponsored"
+          rel="nofollow sponsored noopener"
           class="drawer-link main-site-link"
           @click="isOpen = false"
         >

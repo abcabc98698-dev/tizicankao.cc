@@ -10,6 +10,7 @@ export function checkLinks(): boolean {
   const validUrls = new Set<string>(nodes.map((n: any) => n.url));
   validUrls.add('/');
   validUrls.add('/404.html');
+  ['/about/', '/methodology/', '/privacy/', '/terms/', '/disclosure/', '/contact/'].forEach(u => validUrls.add(u));
 
   let hasError = false;
 

@@ -62,8 +62,20 @@
         <div class="footer-disclosure">
           <strong>网络与商业模式透明说明：</strong>
           梯子参考（tizicankao.cc）为面向设备与任务选型的中立技术资料库。本站不冒充第三方官网，不经营未授权代理分销。商业服务对比与实时套餐测速均主动导向同一运营网络的选购主站
-          <a href="https://jichangbang.org/recommend/?utm_source=tizicankao.cc&utm_medium=referral&utm_campaign=footer" target="_blank" rel="noopener sponsored">机场榜一 (jichangbang.org) ↗</a>。
+          <a href="https://jichangbang.org/recommend/?utm_source=tizicankao.cc&utm_medium=referral&utm_campaign=footer" target="_blank" rel="nofollow sponsored noopener">机场榜一 (jichangbang.org) ↗</a>。
           所有软件下载均保留官方开源 Releases 溯源。
+        </div>
+
+        <div class="footer-trust-links">
+          <a href="/about/">关于我们</a>
+          <span>·</span>
+          <a href="/methodology/">评测方法论</a>
+          <span>·</span>
+          <a href="/disclosure/">推广披露政策</a>
+          <span>·</span>
+          <a href="/privacy/">隐私政策</a>
+          <span>·</span>
+          <a href="/terms/">服务条款与免责声明</a>
         </div>
 
         <div class="footer-copy">

@@ -46,7 +46,8 @@ export function prepareContent(): { publishedCount: number; scaffoldCount: numbe
         if (!pageUrl.endsWith('/')) pageUrl += '/';
         if (pageUrl === '//') pageUrl = '/';
 
-        if (publishedMap.has(pageUrl)) {
+        const isSupportPage = ['/about/', '/methodology/', '/privacy/', '/terms/', '/disclosure/', '/contact/'].includes(pageUrl);
+        if (publishedMap.has(pageUrl) || isSupportPage) {
           const dest = path.join(generatedDir, rel);
           fs.mkdirSync(path.dirname(dest), { recursive: true });
           fs.copyFileSync(full, dest);
@@ -147,7 +148,19 @@ layout: page
   fs.writeFileSync(path.join(generatedDir, '404.md'), notFoundContent, 'utf-8');
 
   // 4. 写入静态资产 robots.txt 并同步 site/public 资产至 site/generated
-  const robotsTxt = `User-agent: *
+  const robotsTxt = `User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: yisouspider
+Allow: /
+
+User-agent: *
 Allow: /
 
 Sitemap: https://tizicankao.cc/sitemap.xml

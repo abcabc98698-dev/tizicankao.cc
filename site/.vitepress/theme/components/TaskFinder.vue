@@ -91,7 +91,7 @@
         <a
           :href="recommendation.mainSiteAction.url"
           target="_blank"
-          rel="noopener sponsored"
+          rel="nofollow sponsored noopener"
           class="mainsite-btn"
         >
           {{ recommendation.mainSiteAction.buttonText }} ↗

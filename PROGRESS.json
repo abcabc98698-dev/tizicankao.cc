@@ -1,6 +1,6 @@
 {
   "site": "https://tizicankao.cc",
-  "updatedAt": "2026-10-26T14:18:19.322Z",
+  "updatedAt": "2026-10-26T14:58:37.781Z",
   "totalNodes": 560,
   "counts": {
     "planned": 540,
@@ -11,9 +11,9 @@
     "blocked": 0
   },
   "zhCharStats": {
-    "totalEligibleChars": 206814,
+    "totalEligibleChars": 212286,
     "publishedPages": 20,
-    "averageCharsPerPage": 10341
+    "averageCharsPerPage": 8491
   },
   "currentPhase": "Phase 3 - Deep Content Verification, Production Build & Search Verification",
   "nextAction": "Published H01-S1 (/choose/needs/)! Next: Publish H01-S2 (/choose/decisions/)"

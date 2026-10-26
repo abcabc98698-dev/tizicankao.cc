@@ -20,7 +20,7 @@
         <a
           :href="finalTargetUrl"
           target="_blank"
-          rel="noopener sponsored"
+          rel="nofollow sponsored noopener"
           class="cta-button"
         >
           <span>{{ buttonText || '在主站查看当前方案' }}</span>

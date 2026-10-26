@@ -615,6 +615,26 @@ blockquote p:last-child {
   color: var(--vp-c-brand-1);
 }
 
+.footer-trust-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.footer-trust-links a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-trust-links a:hover {
+  color: var(--vp-c-brand-1);
+}
+
 /* 移动端与小屏高体验排版微调 */
 @media (max-width: 768px) {
   .site-main-content {

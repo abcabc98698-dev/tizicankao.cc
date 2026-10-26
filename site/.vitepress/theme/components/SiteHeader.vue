@@ -35,7 +35,7 @@
           <a
             href="https://jichangbang.org/recommend/?utm_source=tizicankao.cc&utm_medium=referral&utm_campaign=header_badge"
             target="_blank"
-            rel="noopener sponsored"
+            rel="nofollow sponsored noopener"
             class="main-site-capsule"
             title="前往 机场榜一 选购中心（独立第三方服务与套餐横向测评）"
           >
